@@ -1,2 +1,40 @@
-# Campus-Compass
-Graph-based campus navigation system using BFS and Dijkstra’s algorithm (C++)
+# Campus Compass
+
+Campus Compass is a C++ command-line application that combines a campus navigation
+graph with a student schedule manager. It loads campus edges and class metadata
+from CSV files, then processes commands to manage students, validate schedules,
+and compute route/graph outputs.
+
+## Project Structure (matches source files)
+- `main.cpp` — CLI entry point; loads `data/edges.csv` + `data/classes.csv`, then reads commands
+- `CampusCompass.cpp/.h` — command parsing + orchestration across graph/catalog/student systems
+- `Graph.cpp/.h` — adjacency-list graph with:
+  - BFS connectivity checks
+  - Dijkstra shortest paths (open edges only)
+  - Edge open/close toggling + edge status checks
+  - MST cost via Prim’s algorithm on induced subgraphs
+- `ClassCatalog.cpp/.h` — stores class info (locationId, start/end times)
+- `StudentManager.cpp/.h` + `Student.h` — student records + schedule operations
+
+## Data Files
+The program expects these files (as used in `main.cpp`):
+- `data/edges.csv`
+- `data/classes.csv`
+
+## Supported Commands
+Commands are parsed in `CampusCompass` and include:
+- `insert`
+- `remove`
+- `dropClass`
+- `replaceClass`
+- `removeClass`
+- `toggleEdgesClosure`
+- `checkEdgeStatus`
+- `isConnected`
+- `printShortestEdges`
+- `printStudentZone`
+- `verifySchedule`
+
+## Notes
+This project was completed as part of a Data Structures & Algorithms course and focuses on
+graph algorithms, data parsing, and command-driven program design.
