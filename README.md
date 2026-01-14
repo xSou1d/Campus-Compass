@@ -17,9 +17,22 @@ and compute route/graph outputs.
 - `StudentManager.cpp/.h` + `Student.h` — student records + schedule operations
 
 ## Data Files
-The program expects these files (as used in `main.cpp`):
-- `data/edges.csv`
-- `data/classes.csv`
+
+This project expects the following CSVs:
+
+### `data/edges.csv`
+Columns:
+- `LocationID_1`, `LocationID_2` (integer node IDs)
+- `Name_1`, `Name_2` (building/location names)
+- `Time` (edge weight / travel time)
+
+### `data/classes.csv`
+Columns:
+- `ClassCode` (e.g., COP3502)
+- `LocationID` (building/location node ID)
+- `Start Time (HH:MM)`, `End Time (HH:MM)`
+
+The program loads `data/edges.csv` and `data/classes.csv` at runtime.
 
 ## Supported Commands
 Commands are parsed in `CampusCompass` and include:
@@ -38,3 +51,4 @@ Commands are parsed in `CampusCompass` and include:
 ## Notes
 This project was completed as part of a Data Structures & Algorithms course and focuses on
 graph algorithms, data parsing, and command-driven program design.
+Data Note: Building names and course codes used are publicly available UF information.
